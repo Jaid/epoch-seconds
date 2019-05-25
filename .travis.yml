@@ -3,15 +3,13 @@ node_js: [node, lts/*]
 cache:
   npm: true
 script:
-  - npx pover install
-  - npx pover build:dev
-  - npx pover build:prod
-  - npx pover test
+  - curl https://gist.githubusercontent.com/Jaid/284917bd3e938add97b699a18b957d8c/raw | bash
 jobs:
   include:
     - stage: Deploy
       before_deploy:
-        - npm run build:prod
+        - npx pover install
+        - npx pover build:prod
         - npx compile-release
       deploy:
         - provider: pages
