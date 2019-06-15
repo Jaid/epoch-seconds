@@ -15,7 +15,6 @@
     "jest": "^24.8.0",
     "rimraf": "^2.6.3",
     "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4",
     "webpack-config-jaid": "5.6.0"
   },
   "scripts": {
