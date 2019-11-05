@@ -4,15 +4,15 @@
   "version": "2.0.5",
   "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
   "dependencies": {
-    "@babel/runtime": "^7.6.2"
+    "@babel/runtime": "^7.6.3"
   },
   "devDependencies": {
     "acorn": "^7.1.0",
     "babel-jest": "^24.9.0",
     "babel-preset-jaid": "^6.10.0",
     "browserslist-config-jaid-universal": "^2.1.0",
-    "eslint": "^6.4.0",
-    "eslint-config-jaid": "^1.32.0",
+    "eslint": "^6.6.0",
+    "eslint-config-jaid": "^1.36.0",
     "jest": "^24.9.0",
     "rimraf": "^3.0.0",
     "webpack-config-jaid": "^5.27.10"
