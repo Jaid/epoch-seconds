@@ -4,7 +4,7 @@
   "version": "2.1.0",
   "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
   "dependencies": {
-    "@babel/runtime": "^7.6.3"
+    "@babel/runtime": "^7.7.2"
   },
   "devDependencies": {
     "acorn": "^7.1.0",
