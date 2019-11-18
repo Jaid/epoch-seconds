@@ -4,4 +4,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: jaid/action
+      - uses: jaid/action@master
