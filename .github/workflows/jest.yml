@@ -6,4 +6,5 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v1.1.0
+      - run: npm install
       - uses: jaid/action-test@master
