@@ -9,5 +9,5 @@ const {default: epochSeconds} = indexModule
 
 it("should run", () => {
   const result = epochSeconds()
-  expect(result).toBeGreaterThan(1549410770)
+  expect(result).toBeGreaterThan(1549410770 * 100)
 })
