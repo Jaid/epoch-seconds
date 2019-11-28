@@ -10,10 +10,14 @@ jobs:
         uses: actions/checkout@v1.2.0
       - name: npm install
         uses: jaid/action-npm-install@master
-      - run: npm run build:prod
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - run: npm run build:prod
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Jest
         uses: jaid/action-jest@master
       - name: Publish
         uses: jaid/action-publish@master
+        with:
+          npmPrepareScript: build:prod
+          publishDirectory: dist/package/production
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
