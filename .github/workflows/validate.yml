@@ -11,7 +11,7 @@ jobs:
       - name: actions/setup-node
         uses: actions/setup-node@v1.3.0
         with:
-          node-version: "13.1.0"
+          node-version: "12.13.1"
       - name: npm install
         uses: jaid/action-npm-install@master
       - name: Jest
