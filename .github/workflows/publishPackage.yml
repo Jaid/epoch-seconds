@@ -5,14 +5,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: actions/checkout
         uses: actions/checkout@v1.2.0
+      - name: actions/setup-node
+        uses: actions/setup-node@v1.3.0
+        with:
+          node-version: "13.0.0"
       - name: npm install
         uses: jaid/action-npm-install@master
-      # - run: npm run build:prod
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Jest
         uses: jaid/action-jest@master
       - name: Publish
