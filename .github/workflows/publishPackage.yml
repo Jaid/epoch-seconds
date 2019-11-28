@@ -11,6 +11,8 @@ jobs:
       - name: npm install
         uses: jaid/action-npm-install@master
       - run: npm run build:prod
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Jest
         uses: jaid/action-jest@master
       - name: Publish
