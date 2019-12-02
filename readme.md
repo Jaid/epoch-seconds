@@ -6,11 +6,11 @@ Returns the seconds passed since Unix epoch.
 ## Installation
 <a href='https://npmjs.com/package/epoch-seconds'><img alt='npm logo' src='https://raw.githubusercontent.com/npm/logos/master/npm%20logo/npm-logo-red.png' height=16/></a>
 ```bash
-npm install --save epoch-seconds@^
+npm install --save epoch-seconds@^2.1.21
 ```
 <a href='https://yarnpkg.com/package/epoch-seconds'><img alt='Yarn logo' src='https://raw.githubusercontent.com/yarnpkg/assets/master/yarn-kitten-full.png' height=24/></a>
 ```bash
-yarn add epoch-seconds@^
+yarn add epoch-seconds@^2.1.21
 ```
 
 
