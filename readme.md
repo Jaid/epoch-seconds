@@ -5,7 +5,23 @@ Returns the seconds passed since Unix epoch.
 
 
 
-## API Reference
+## Try it out
+Open a browser's JavaScript console and execute:
+
+```javascript
+const scriptElement = document.createElement("script");
+scriptElement.setAttribute("type","text/javascript");
+scriptElement.setAttribute("src","https://unpkg.com/epoch-seconds@2.1.21");
+document.querySelector("head").appendChild(scriptElement);
+```
+
+The module is now loaded in a variable.
+
+```javascript
+typeof epoch-seconds.default
+```
+
+## Documentation
 **Kind**: Exported function  
 **Returns**: <code>number</code> - Seconds passed since Unix epoch (01 January 1970)  
 
