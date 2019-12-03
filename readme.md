@@ -24,10 +24,10 @@ scriptElement.setAttribute("src","https://unpkg.com/epoch-seconds@2.1.21");
 document.querySelector("head").appendChild(scriptElement);
 ```
 
-The module is now loaded in a variable.
+This module is now loaded in a variable that can be accessed in any scope.
 
 ```javascript
-typeof epoch-seconds.default
+typeof epochSeconds.default
 ```
 
 ## Documentation
