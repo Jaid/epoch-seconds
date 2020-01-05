@@ -1,7 +1,10 @@
 module.exports = {
   testEnvironment: "node",
   coverageDirectory: "<rootDir>/dist/jest/coverage",
-  collectCoverageFrom: ["<rootDir>/dist/package/development/**"],
+  collectCoverageFrom: [
+    "<rootDir>/dist/package/development/**",
+    "!<rootDir>/node_modules/",
+  ],
   coverageReporters: [
     "text-summary",
     "html",
