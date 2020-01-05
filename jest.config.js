@@ -1,14 +1,19 @@
 module.exports = {
   testEnvironment: "node",
-  coverageDirectory: "dist/jest/coverage",
+  coverageDirectory: "<rootDir>/dist/jest/coverage",
   collectCoverageFrom: ["<rootDir>/dist/package/development/**"],
+  coverageReporters: [
+    "text-summary",
+    "html",
+  ],
   testPathIgnorePatterns: [
-    "/node_modules/",
-    "/dist/",
+    "<rootDir>/node_modules/",
+    "<rootDir>/dist/",
   ],
   moduleNameMapper: {
     "^root": "<rootDir>",
     "^src": "<rootDir>/src",
     "^lib": "<rootDir>/src/lib",
+    "^components": "<rootDir>/src/components",
   },
 }
