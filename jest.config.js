@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: "node",
   coverageDirectory: "dist/jest/coverage",
-  collectCoverageFrom: ["src/**"],
+  collectCoverageFrom: ["<rootDir>/dist/package/development/**"],
   testPathIgnorePatterns: [
     "/node_modules/",
     "/dist/",
