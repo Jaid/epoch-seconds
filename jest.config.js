@@ -17,6 +17,5 @@ module.exports = {
     "^root": "<rootDir>",
     "^src": "<rootDir>/src",
     "^lib": "<rootDir>/src/lib",
-    "^components": "<rootDir>/src/components",
   },
 }
