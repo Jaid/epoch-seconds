@@ -1,11 +1,14 @@
 # epoch-seconds
 
 
-<a href="https://actions-badge.atrox.dev/Jaid/epoch-seconds/goto"><img src="https://img.shields.io/endpoint.svg?style=flat-square&url=https%3A%2F%2Factions-badge.atrox.dev%2FJaid%2Fepoch-seconds%2Fbadge" alt="Build status"/></a> <a href="https://raw.githubusercontent.com/Jaid/epoch-seconds/master/license.txt"><img src="https://img.shields.io/github/license/Jaid/epoch-seconds?style=flat-square" alt="License"/></a>  
-<a href="https://github.com/Jaid/epoch-seconds/commits"><img src="https://img.shields.io/github/commits-since/Jaid/epoch-seconds/v2.1.23?style=flat-square&logo=github" alt="Commits since v2.1.23"/></a> <a href="https://github.com/Jaid/epoch-seconds/commits"><img src="https://img.shields.io/github/last-commit/Jaid/epoch-seconds?style=flat-square&logo=github" alt="Last commit"/></a> <a href="https://github.com/Jaid/epoch-seconds/issues"><img src="https://img.shields.io/github/issues/Jaid/epoch-seconds?style=flat-square&logo=github" alt="Issues"/></a>  
+<a href="https://raw.githubusercontent.com/Jaid/epoch-seconds/master/license.txt"><img src="https://img.shields.io/github/license/Jaid/epoch-seconds?style=flat-square" alt="License"/></a>  
+<a href="https://actions-badge.atrox.dev/Jaid/epoch-seconds/goto"><img src="https://img.shields.io/endpoint.svg?style=flat-square&url=https%3A%2F%2Factions-badge.atrox.dev%2FJaid%2Fepoch-seconds%2Fbadge" alt="Build status"/></a> <a href="https://github.com/Jaid/epoch-seconds/commits"><img src="https://img.shields.io/github/commits-since/Jaid/epoch-seconds/v2.1.23?style=flat-square&logo=github" alt="Commits since v2.1.23"/></a> <a href="https://github.com/Jaid/epoch-seconds/commits"><img src="https://img.shields.io/github/last-commit/Jaid/epoch-seconds?style=flat-square&logo=github" alt="Last commit"/></a> <a href="https://github.com/Jaid/epoch-seconds/issues"><img src="https://img.shields.io/github/issues/Jaid/epoch-seconds?style=flat-square&logo=github" alt="Issues"/></a>  
 <a href="https://npmjs.com/package/epoch-seconds"><img src="https://img.shields.io/npm/v/epoch-seconds?style=flat-square&logo=npm&label=latest%20version" alt="Latest version on npm"/></a> <a href="https://github.com/Jaid/epoch-seconds/network/dependents"><img src="https://img.shields.io/librariesio/dependents/npm/epoch-seconds?style=flat-square&logo=npm" alt="Dependents"/></a> <a href="https://npmjs.com/package/epoch-seconds"><img src="https://img.shields.io/npm/dm/epoch-seconds?style=flat-square&logo=npm" alt="Downloads"/></a>
 
 **Returns the seconds passed since Unix epoch.**
+
+
+
 
 
 
@@ -52,29 +55,8 @@ epoch-seconds is now stored in the global variable `epochSeconds`. The following
 typeof epochSeconds.default
 ```
 
-<a name="module_epoch-seconds"></a>
 
-## Reference
-<a name="module_epoch-seconds.._default"></a>
 
-### epoch-seconds~\_default([compareValue]) ⇒ <code>number</code>
-**Kind**: inner method of [<code>epoch-seconds</code>](#module_epoch-seconds)  
-**Returns**: <code>number</code> - Seconds passed since Unix epoch (01 January 1970)  
-
-| Param | Type |
-| --- | --- |
-| [compareValue] | <code>number</code> | 
-
-**Example**  
-```javascript
-import epochSeconds from "epoch-seconds"
-const result = epochSeconds()
-result === 1549410770
-setTimeout(() => {
-  const result2 = epochSeconds(result)
-  result2 === 3
-}, 3000)
-```
 
 
 
