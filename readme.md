@@ -36,24 +36,6 @@ yarn add epoch-seconds@^2.1.23
 ```
 
 
-## Try it out
-
-
-
-Open a browser's JavaScript console and execute:
-
-```javascript
-const scriptElement = document.createElement("script");
-scriptElement.setAttribute("type", "text/javascript");
-scriptElement.setAttribute("src", "https://cdn.jsdelivr.net/npm/epoch-seconds@2.1.23/index.js");
-document.querySelector("head").appendChild(scriptElement);
-```
-
-epoch-seconds is now stored in the global variable `epochSeconds`. The following console expression should return something other than `"undefined"`.
-
-```javascript
-typeof epochSeconds.default
-```
 
 
 
