@@ -30,5 +30,6 @@
     "prepareActionJest": "npm run build:prod"
   },
   "name": "epoch-seconds",
-  "description": "Returns the seconds passed since Unix epoch."
+  "description": "Returns the seconds passed since Unix epoch.",
+  "funding": "https://github.com/sponsors/jaid"
 }
