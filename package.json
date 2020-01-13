@@ -31,5 +31,9 @@
   },
   "name": "epoch-seconds",
   "description": "Returns the seconds passed since Unix epoch.",
-  "funding": "https://github.com/sponsors/jaid"
+  "funding": "https://github.com/sponsors/jaid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaid/epoch-seconds"
+  }
 }
