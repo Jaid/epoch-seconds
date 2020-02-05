@@ -1,3 +1,3 @@
-import epochSeconds from "epoch-Seconds"
+import epochSeconds from "epoch-seconds"
 
 const result = epochSeconds()
