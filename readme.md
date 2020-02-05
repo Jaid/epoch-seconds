@@ -36,13 +36,14 @@ npm install --save @jaid/epoch-seconds@^2.1.24
 
 ## Example
 
+
 ```javascript
-import epochSeconds from "epoch-Seconds"
+import epochSeconds from "epoch-seconds"
 
 const result = epochSeconds()
 ```
 
-Variable `result` will now be:
+Variable `result` will be:
 
 ```javascript
 1549410770
