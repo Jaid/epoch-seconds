@@ -35,5 +35,26 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jaid/epoch-seconds"
-  }
+  },
+  "homepage": "https://github.com/jaid/epoch-seconds",
+  "keywords": [
+    "1970",
+    "date",
+    "date-now",
+    "epoch",
+    "gmt",
+    "linux",
+    "millis",
+    "milliseconds",
+    "now",
+    "posix",
+    "posix-epoch",
+    "second",
+    "seconds",
+    "time",
+    "timestamp",
+    "unix",
+    "unix-epoch",
+    "utc"
+  ]
 }
