@@ -7,6 +7,9 @@
     "outDir": "dist/typescript",
     "declaration": true,
     "emitDeclarationOnly": true,
+    "moduleResolution": "node",
+    "module": "umd",
+    "removeComments": false,
     "paths": {
       "lib/*": [
         "src/lib/*"
