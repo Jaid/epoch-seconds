@@ -21,7 +21,7 @@
     "clean": "rimraf dist/",
     "build:prod": "NODE_ENV=production webpack",
     "build:dev": "NODE_ENV=development webpack",
-    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/development/index.js jest",
+    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
     "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
     "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
     "test:debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --runInBand --detectOpenHandles",
