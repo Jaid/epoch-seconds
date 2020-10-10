@@ -1,6 +1,6 @@
 {
   "name": "epoch-seconds",
-  "description": "Returns the seconds passed since Unix epoch.",
+  "description": "Returns the amount of seconds passed since Unix epoch (1970).",
   "webpackConfigJaid": "universalLib",
   "version": "3.0.0",
   "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
