@@ -1,4 +1,6 @@
 {
+  "name": "epoch-seconds",
+  "description": "Returns the seconds passed since Unix epoch.",
   "webpackConfigJaid": "universalLib",
   "version": "3.0.0",
   "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
@@ -29,14 +31,12 @@
     "test:debug": "DEBUG=\"$DEBUG,$(basename $PWD),$(basename $PWD):*\" NODE_ENV=test node --inspect=9229 node_modules/jest/bin/jest.js --runInBand",
     "prepareActionJest": "npm run build:prod"
   },
-  "name": "epoch-seconds",
-  "description": "Returns the seconds passed since Unix epoch.",
+  "homepage": "https://github.com/jaid/epoch-seconds",
   "funding": "https://github.com/sponsors/jaid",
   "repository": {
     "type": "git",
     "url": "https://github.com/jaid/epoch-seconds"
   },
-  "homepage": "https://github.com/jaid/epoch-seconds",
   "keywords": [
     "1970",
     "date",
