@@ -4,9 +4,7 @@
   "webpackConfigJaid": "universalLib",
   "version": "3.0.0",
   "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
-  "dependencies": {
-    "@babel/runtime": "^7.11.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "acorn": "^7.1.1",
     "babel-jest": "^26.5.2",
