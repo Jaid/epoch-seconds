@@ -11,12 +11,11 @@
     "eslint": "^7.32.0",
     "eslint-config-jaid": "^1.56.0",
     "jest": "^27.2.0",
-    "rimraf": "^3.0.2",
     "tsconfig-jaid": "^2.1.1",
     "webpack-config-jaid": "^16.0.0"
   },
   "scripts": {
-    "clean": "rimraf dist/",
+    "clean": "rm -rf dist/",
     "build:prod": "NODE_ENV=production webpack",
     "build:dev": "NODE_ENV=development webpack",
     "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
