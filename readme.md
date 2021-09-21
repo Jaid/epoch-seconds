@@ -5,7 +5,7 @@
 <a href="https://actions-badge.atrox.dev/jaid/epoch-seconds/goto"><img src="https://img.shields.io/endpoint.svg?style=flat-square&url=https%3A%2F%2Factions-badge.atrox.dev%2Fjaid%2Fepoch-seconds%2Fbadge" alt="Build status"/></a> <a href="https://github.com/jaid/epoch-seconds/commits"><img src="https://img.shields.io/github/commits-since/jaid/epoch-seconds/v3.0.0?style=flat-square&logo=github" alt="Commits since v3.0.0"/></a> <a href="https://github.com/jaid/epoch-seconds/commits"><img src="https://img.shields.io/github/last-commit/jaid/epoch-seconds?style=flat-square&logo=github" alt="Last commit"/></a> <a href="https://github.com/jaid/epoch-seconds/issues"><img src="https://img.shields.io/github/issues/jaid/epoch-seconds?style=flat-square&logo=github" alt="Issues"/></a>  
 <a href="https://npmjs.com/package/epoch-seconds"><img src="https://img.shields.io/npm/v/epoch-seconds?style=flat-square&logo=npm&label=latest%20version" alt="Latest version on npm"/></a> <a href="https://github.com/jaid/epoch-seconds/network/dependents"><img src="https://img.shields.io/librariesio/dependents/npm/epoch-seconds?style=flat-square&logo=npm" alt="Dependents"/></a> <a href="https://npmjs.com/package/epoch-seconds"><img src="https://img.shields.io/npm/dm/epoch-seconds?style=flat-square&logo=npm" alt="Downloads"/></a>
 
-**Returns the seconds passed since Unix epoch.**
+**Returns the amount of seconds passed since Unix epoch (1970).**
 
 
 
@@ -25,13 +25,6 @@ npm install --save epoch-seconds@^3.0.0
 yarn add epoch-seconds@^3.0.0
 ```
 
-<a href="https://github.com/jaid/epoch-seconds/packages"><img src="https://img.shields.io/badge/GitHub Packages-@jaid/epoch--seconds-24282e?style=flat-square&logo=github" alt="@jaid/epoch-seconds on GitHub Packages"/></a>  
-(if [configured properly](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages))
-
-```bash
-npm install --save @jaid/epoch-seconds@^3.0.0
-```
-
 
 
 ## Example
@@ -43,7 +36,7 @@ import epochSeconds from "epoch-seconds"
 const result = epochSeconds()
 ```
 
-Variable `result` will be:
+Variable `result` will be something like:
 
 ```javascript
 1549410770
@@ -60,7 +53,17 @@ Variable `result` will be:
 
 
 
+
+
+
+
+
+
+
 ## Development
+
+<details>
+<summary><b>Development hints for maintaining and improving epoch-seconds</b></summary>
 
 
 
@@ -79,7 +82,13 @@ Testing in production environment:
 npm run test
 ```
 
+</details>
 
 ## License
 [MIT License](https://raw.githubusercontent.com/jaid/epoch-seconds/master/license.txt)  
-Copyright © 2020, Jaid \<jaid.jsx@gmail.com> (https://github.com/jaid)
+Copyright © 2021, Jaid \<jaid.jsx@gmail.com> (https://github.com/jaid)
+
+<!---
+Readme generated with tldw v7.1.0
+https://github.com/Jaid/tldw
+-->
