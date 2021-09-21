@@ -1,13 +1,15 @@
 import path from "node:path"
+import {fileURLToPath} from "node:url"
 
 import {expect, it} from "@jest/globals"
 
-const indexModule = require(process.env.MAIN ? path.resolve(process.env.MAIN) : path.join(__dirname, "..", "src"))
+const dirName = path.dirname(fileURLToPath(import.meta.url))
+const indexPath = process.env.MAIN ? path.resolve(dirName, "..", process.env.MAIN) : path.join(dirName, "..", "src")
 
 /**
  * @type { import("../src") }
  */
-const {default: epochSeconds} = indexModule
+const {default: epochSeconds} = await import(indexPath)
 
 it("should run", () => {
   const result = epochSeconds()
