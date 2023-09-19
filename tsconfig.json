@@ -1,3 +1,6 @@
 {
-  "extends": "tsconfig-jaid"
+  "extends": "tsconfig-jaid",
+  "ts-node": {
+    "module": "commonjs"
+  }
 }

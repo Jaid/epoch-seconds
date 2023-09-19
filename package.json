@@ -1,35 +1,8 @@
 {
+  "version": "3.0.2",
+  "type": "module",
   "name": "epoch-seconds",
   "description": "Returns the amount of seconds passed since Unix epoch (1970).",
-  "webpackConfigJaid": "universalLib",
-  "version": "3.0.2",
-  "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
-  "devDependencies": {
-    "babel-preset-jaid": "^17.0.0",
-    "browserslist-config-jaid-universal": "^3.0.0",
-    "eslint": "^8.49.0",
-    "eslint-config-jaid": "^8.14.0",
-    "jest": "^29.7.0",
-    "tsconfig-jaid": "^6.0.2",
-    "webpack-config-jaid": "^17.4.2"
-  },
-  "scripts": {
-    "clean": "rm -rf dist/",
-    "build:prod": "NODE_ENV=production webpack",
-    "build:dev": "NODE_ENV=development webpack",
-    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
-    "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
-    "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
-    "test:debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --runInBand --detectOpenHandles",
-    "debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --colors --runInBand",
-    "prepareActionJest": "npm run build:prod"
-  },
-  "homepage": "https://github.com/jaid/epoch-seconds",
-  "funding": "https://github.com/sponsors/jaid",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jaid/epoch-seconds"
-  },
   "keywords": [
     "1970",
     "date",
@@ -50,5 +23,33 @@
     "unix-epoch",
     "utc"
   ],
-  "type": "module"
+  "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
+  "homepage": "https://github.com/jaid/epoch-seconds",
+  "funding": "https://github.com/sponsors/jaid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaid/epoch-seconds"
+  },
+  "devDependencies": {
+    "browserslist-config-jaid-universal": "^3.0.0",
+    "eslint-config-jaid": "^8.14.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-jaid": "^6.0.2",
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "build:prod": "NODE_ENV=production webpack",
+    "build": "NODE_ENV=development node --loader ts-node/esm node_modules/webpack-cli/bin/cli.js --config webpack.config.ts",
+    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
+    "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
+    "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
+    "test:debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --runInBand --detectOpenHandles",
+    "debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --colors --runInBand",
+    "prepareActionJest": "npm run build:prod"
+  },
+  "webpackConfigJaid": "universalLib"
 }
