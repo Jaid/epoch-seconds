@@ -35,15 +35,17 @@
     "eslint-config-jaid": "^8.14.0",
     "ts-node": "^10.9.1",
     "tsconfig-jaid": "^6.0.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^3.12.10",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-config-jaid": "file://./etc/webpack-config-jaid"
   },
   "scripts": {
     "clean": "rm -rf dist/",
     "build:prod": "NODE_ENV=production webpack",
-    "build": "NODE_ENV=development node --loader ts-node/esm node_modules/webpack-cli/bin/cli.js --config webpack.config.ts",
+    "build": "NODE_ENV=development tsx node_modules/webpack-cli/bin/cli.js",
     "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
     "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
     "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
