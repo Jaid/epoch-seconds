@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "browserslist-config-jaid-universal": "^3.0.0",
-    "eslint-config-jaid": "^8.14.0",
+    "eslint-config-jaid": "^8.15.1",
     "ts-node": "^10.9.1",
     "tsconfig-jaid": "^6.0.2",
     "tsconfig-paths": "^4.2.0",
