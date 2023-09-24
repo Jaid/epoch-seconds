@@ -2,7 +2,16 @@ import {ConfigBuilder} from './ConfigBuilder.js'
 
 const buildConfig = async () => {
   const configBuilder = new ConfigBuilder
-  await configBuilder.run()
+  configBuilder.set(`target`, `web`)
+  configBuilder.set(`experiments.futureDefaults`, true)
+  configBuilder.addExtension(`ts`)
+  configBuilder.addRule(`ts`, {
+    loader: `ts-loader`,
+    options: {
+      onlyCompileBundledFiles: true,
+      transpileOnly: true,
+    },
+  })
   return configBuilder.config
 }
 
