@@ -68,6 +68,11 @@ export class ConfigBuilder {
   addPlugin(plugin: PluginInput, options?: unknown) {
     this.addClassOrInstance(`plugins`, plugin, options)
   }
+  addResolveAlias(virtualFolder: string, ...replacements: string[]) {
+    this.setDefault(`resolve.alias`, {})
+    const replacementsNormalized = replacements.map(replacement => this.fromContextFolder(replacement))
+    this.config.resolve!.alias![virtualFolder] = replacementsNormalized
+  }
   addResolvePlugin(plugin: PluginInput, options?: unknown) {
     this.addClassOrInstance(`resolve.plugins`, plugin, options)
   }
@@ -145,5 +150,11 @@ export class ConfigBuilder {
     if (!this.has(key)) {
       this.set(key, value)
     }
+  }
+  setExtensionAlias(extension: string, ...extensions: string[]) {
+    this.setDefault(`resolve.extensionAlias`, {})
+    const normalizedExtension = `.${extension}`
+    const normalizedExtensions = extensions.map(extensionsEntry => `.${extensionsEntry}`)
+    this.config.resolve!.extensionAlias![normalizedExtension] = normalizedExtensions
   }
 }

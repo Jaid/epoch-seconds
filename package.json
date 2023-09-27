@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "browserslist-config-jaid-universal": "^3.0.0",
+    "bundle-declarations-webpack-plugin": "^4.0.1",
     "eslint-config-jaid": "^8.15.3",
     "ts-node": "^10.9.1",
     "tsconfig-jaid": "^6.1.1",

@@ -1,8 +1,10 @@
 import type {Options as BaseOptions} from './ConfigBuilder.js'
+import type {Options as BundleDeclarationsPluginOptions} from 'bundle-declarations-webpack-plugin'
 import type {Options as TsLoaderOptions} from 'ts-loader'
 
 import {ConfigBuilder} from './ConfigBuilder.js'
 import {OutputConfigPlugin} from './index.js'
+import BundleDeclarationsPlugin from 'bundle-declarations-webpack-plugin'
 import {TsconfigPathsPlugin} from 'tsconfig-paths-webpack-plugin'
 
 export type Options = BaseOptions & {}
@@ -33,7 +35,11 @@ export class CommonConfigBuilder extends ConfigBuilder {
       loader: `ts-loader`,
       options: this.#tsLoaderOptions,
     })
-    this.addResolvePlugin(TsconfigPathsPlugin)
+    this.setExtensionAlias(`js`, `ts`, `js`)
+    this.addResolveAlias(`~/lib`, `lib`)
+    this.addResolveAlias(`~/src`, `src`)
+    this.addResolveAlias(`~/etc`, `etc`)
+    this.addResolveAlias(`~/root`, `.`)
     return super.build()
   }
   async buildDevelopment() {
@@ -42,6 +48,20 @@ export class CommonConfigBuilder extends ConfigBuilder {
   async buildProduction() {
     this.set(`devtool`, `source-map`)
     this.set(`optimization.minimize`, false)
+    this.addPlugin(new BundleDeclarationsPlugin({
+      compilationOptions: {
+        preferredConfigPath: this.fromContextFolder(`tsconfig.json`),
+      },
+      entry: {
+        output: {
+          sortNodes: true,
+          umdModuleName: `a`,
+        },
+      },
+      outFile: `types.d.ts`,
+      removeEmptyExports: true,
+      removeEmptyLines: true,
+    }))
   }
   makeOptions(options: Partial<Options>): Options {
     const baseOptions = super.makeOptions(options)
