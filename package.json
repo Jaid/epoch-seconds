@@ -36,7 +36,7 @@
     "ts-node": "^10.9.1",
     "tsconfig-jaid": "^6.0.2",
     "tsconfig-paths": "^4.2.0",
-    "tsx": "^3.12.10",
+    "tsx": "^3.13.0",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
