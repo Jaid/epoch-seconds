@@ -3,6 +3,7 @@ import type {Options as TsLoaderOptions} from 'ts-loader'
 
 import {ConfigBuilder} from './ConfigBuilder.js'
 import {OutputConfigPlugin} from './index.js'
+import {TsconfigPathsPlugin} from 'tsconfig-paths-webpack-plugin'
 
 export type Options = BaseOptions & {}
 
@@ -12,8 +13,14 @@ export class CommonConfigBuilder extends ConfigBuilder {
   }
   constructor(options: Partial<Options> = {}) {
     super(options)
-    if (this.isProduction) {
+    if (this.isDevelopment) {
       this.#tsLoaderOptions.transpileOnly = true
+    } else {
+      this.#tsLoaderOptions.compilerOptions = {
+        declaration: true,
+        declarationDir: this.fromOutputFolder(`types`),
+        declarationMap: true,
+      }
     }
   }
   async build() {
@@ -21,11 +28,12 @@ export class CommonConfigBuilder extends ConfigBuilder {
     this.set(`target`, `web`)
     this.set(`experiments.futureDefaults`, true)
     this.addExtension(`ts`)
-    this.addPlugin(new OutputConfigPlugin)
+    this.addPlugin(OutputConfigPlugin)
     this.addRule(`ts`, {
       loader: `ts-loader`,
       options: this.#tsLoaderOptions,
     })
+    this.addResolvePlugin(TsconfigPathsPlugin)
     return super.build()
   }
   async buildDevelopment() {

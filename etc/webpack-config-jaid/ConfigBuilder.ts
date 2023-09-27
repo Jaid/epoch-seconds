@@ -1,4 +1,5 @@
-import type {Configuration, RuleSetCondition, RuleSetUse} from 'webpack'
+import type {Class} from 'type-fest'
+import type {Configuration, RuleSetCondition, RuleSetUse, WebpackPluginInstance} from 'webpack'
 
 import path from 'node:path'
 
@@ -12,6 +13,7 @@ export type Options = {
   outputFolder: string
 }
 type TesterInput = RegExp | string | string[]
+type PluginInput = Class<WebpackPluginInstance> | WebpackPluginInstance
 
 const compileTester = (testerInput: TesterInput): RuleSetCondition => {
   if (testerInput instanceof RegExp) {
@@ -46,11 +48,28 @@ export class ConfigBuilder {
   get webpackConfig() {
     return this.config
   }
+  addClassOrInstance(key: Key, plugin: PluginInput, options?: unknown) {
+    let instance
+    if (lodash.isFunction(plugin)) {
+      const Plugin = <Class<WebpackPluginInstance>> <unknown> plugin
+      if (options !== undefined) {
+        instance = new Plugin(options)
+      } else {
+        instance = new Plugin
+      }
+    } else {
+      instance = plugin
+    }
+    this.append(key, instance)
+  }
   addExtension(extension: string) {
     this.appendUnique(`resolve.extensions`, `.${extension}`)
   }
-  addPlugin(plugin: unknown) {
-    this.append(`plugins`, plugin)
+  addPlugin(plugin: PluginInput, options?: unknown) {
+    this.addClassOrInstance(`plugins`, plugin, options)
+  }
+  addResolvePlugin(plugin: PluginInput, options?: unknown) {
+    this.addClassOrInstance(`resolve.plugins`, plugin, options)
   }
   addRule(testerInput: TesterInput, ...loaders: RuleSetUse[]) {
     this.append(`module.rules`, {
