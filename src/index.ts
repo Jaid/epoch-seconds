@@ -10,3 +10,4 @@ const epochSeconds = (): number => {
 }
 
 export default epochSeconds
+export {epochSeconds}
