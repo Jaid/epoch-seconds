@@ -9,7 +9,7 @@ export type Key = string
 export type Env = "development" | "production"
 export type Options = {
   contextFolder: string
-  env: Env
+  env: string
   outputFolder: string
 }
 type TesterInput = RegExp | string | string[]
@@ -33,7 +33,9 @@ export class ConfigBuilder {
   protected outputFolder: string
   #isProduction: boolean
   constructor(options: Partial<Options> = {}) {
-    this.options = this.makeOptions(options)
+    const defaultOptions = this.getDefaultOptions()
+    const mergedOptions = this.mergeOptions(options, defaultOptions)
+    this.options = this.normalizeOptions(mergedOptions) ?? mergedOptions
     this.#isProduction = this.options.env === `production`
     this.mode = this.#isProduction ? `production` : `development`
     this.outputFolder = path.resolve(this.options.outputFolder)
@@ -49,7 +51,7 @@ export class ConfigBuilder {
     return this.config
   }
   addClassOrInstance(key: Key, plugin: PluginInput, options?: unknown) {
-    let instance
+    let instance: WebpackPluginInstance
     if (lodash.isFunction(plugin)) {
       const Plugin = <Class<WebpackPluginInstance>> <unknown> plugin
       if (options !== undefined) {
@@ -114,6 +116,13 @@ export class ConfigBuilder {
   get(key: Key) {
     return <unknown> lodash.get(this.config, key)
   }
+  getDefaultOptions(): Partial<Options> {
+    return {
+      contextFolder: `.`,
+      env: process.env.NODE_ENV ?? `development`,
+      outputFolder: `out/package`,
+    }
+  }
   getEnsuredArray(key: Key) {
     const array = <unknown[] | undefined> this.get(key)
     if (Array.isArray(array)) {
@@ -126,13 +135,10 @@ export class ConfigBuilder {
   has(key: Key) {
     return lodash.has(this.config, key)
   }
-  makeOptions(options: Partial<Options>): Options {
-    return Object.assign({}, options, {
-      contextFolder: `.`,
-      env: process.env.NODE_ENV ?? `development`,
-      outputFolder: `out/package`,
-    })
+  mergeOptions(options: Partial<Options>, defaultOptions: Partial<Options>): Options {
+    return <Options> Object.assign({}, defaultOptions, options)
   }
+  normalizeOptions(options: Options): Options | void {}
   prepend(key: Key, value: unknown) {
     const array = this.getEnsuredArray(key)
     array.unshift(value)

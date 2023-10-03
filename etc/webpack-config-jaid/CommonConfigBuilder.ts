@@ -1,29 +1,17 @@
 import type {Options as BaseOptions} from './ConfigBuilder.js'
-import type {Options as BundleDeclarationsPluginOptions} from 'bundle-declarations-webpack-plugin'
 import type {Options as TsLoaderOptions} from 'ts-loader'
 
 import {ConfigBuilder} from './ConfigBuilder.js'
-import {OutputConfigPlugin} from './index.js'
-import BundleDeclarationsPlugin from 'bundle-declarations-webpack-plugin'
-import {TsconfigPathsPlugin} from 'tsconfig-paths-webpack-plugin'
+import {OutputConfigPlugin} from './OutputConfigPlugin.js'
+import TypescriptDeclarationPlugin from 'typescript-declaration-webpack-plugin'
 
 export type Options = BaseOptions & {}
 
+const tempTypesFolder = `.types`
+
 export class CommonConfigBuilder extends ConfigBuilder {
-  #tsLoaderOptions: Partial<TsLoaderOptions> = {
-    onlyCompileBundledFiles: true,
-  }
   constructor(options: Partial<Options> = {}) {
     super(options)
-    if (this.isDevelopment) {
-      this.#tsLoaderOptions.transpileOnly = true
-    } else {
-      this.#tsLoaderOptions.compilerOptions = {
-        declaration: true,
-        declarationDir: this.fromOutputFolder(`types`),
-        declarationMap: true,
-      }
-    }
   }
   async build() {
     this.set(`mode`, this.mode)
@@ -33,7 +21,7 @@ export class CommonConfigBuilder extends ConfigBuilder {
     this.addPlugin(OutputConfigPlugin)
     this.addRule(`ts`, {
       loader: `ts-loader`,
-      options: this.#tsLoaderOptions,
+      options: this.getTsLoaderOptions(),
     })
     this.setExtensionAlias(`js`, `ts`, `js`)
     this.addResolveAlias(`~/lib`, `lib`)
@@ -46,30 +34,35 @@ export class CommonConfigBuilder extends ConfigBuilder {
     this.set(`devtool`, `inline-source-map`)
   }
   async buildProduction() {
-    this.set(`devtool`, `source-map`)
     this.set(`optimization.minimize`, false)
-    this.addPlugin(new BundleDeclarationsPlugin({
-      compilationOptions: {
-        preferredConfigPath: this.fromContextFolder(`tsconfig.json`),
-      },
-      entry: {
-        output: {
-          sortNodes: true,
-          umdModuleName: `a`,
-        },
-      },
-      outFile: `types.d.ts`,
-      removeEmptyExports: true,
-      removeEmptyLines: true,
-    }))
+    this.set(`output.clean`, true)
   }
-  makeOptions(options: Partial<Options>): Options {
-    const baseOptions = super.makeOptions(options)
-    const defaultOptions: Partial<Options> = {}
-    if (options.outputFolder === undefined) {
-      const mode = baseOptions.env === `production` ? `production` : `development`
-      defaultOptions.outputFolder = `out/package/${mode}`
+  getDefaultOptions(): Partial<Options> {
+    const defaultOptions = super.getDefaultOptions()
+    return Object.assign({}, defaultOptions, {
+      outputFolder: undefined,
+    })
+  }
+  getTsLoaderOptions(): Partial<TsLoaderOptions> {
+    const tsLoaderOptions: Partial<TsLoaderOptions> = {
+      onlyCompileBundledFiles: true,
     }
-    return Object.assign({}, baseOptions, defaultOptions)
+    if (this.isDevelopment) {
+      tsLoaderOptions.transpileOnly = true
+    } else {
+      tsLoaderOptions.compilerOptions = {
+        declaration: true,
+        declarationDir: this.fromOutputFolder(tempTypesFolder),
+      }
+    }
+    return tsLoaderOptions
+  }
+  normalizeOptions(options: Options): Options {
+    const patch: Partial<Options> = {}
+    if (options.outputFolder === undefined) {
+      const mode = options.env === `production` ? `production` : `development`
+      patch.outputFolder = `out/package/${mode}`
+    }
+    return Object.assign({}, options, patch)
   }
 }
