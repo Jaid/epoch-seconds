@@ -1,8 +1,0 @@
-{
-  "version": "1.0.0",
-  "type": "module",
-  "name": "webpack-config-jaid",
-  "dependencies": {
-    "ts-loader": "^9.4.4"
-  }
-}
