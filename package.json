@@ -1,7 +1,7 @@
 {
+  "name": "epoch-seconds",
   "version": "3.0.2",
   "type": "module",
-  "name": "epoch-seconds",
   "description": "Returns the amount of seconds passed since Unix epoch (1970).",
   "keywords": [
     "1970",
@@ -30,6 +30,45 @@
     "type": "git",
     "url": "https://github.com/jaid/epoch-seconds"
   },
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "build": "wireit",
+    "build:production": "wireit",
+    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
+    "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
+    "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
+    "test:debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --runInBand --detectOpenHandles",
+    "debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --colors --runInBand",
+    "prepareActionJest": "npm run build:prod"
+  },
+  "wireit": {
+    "build:production": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "output": [
+        "dist/package/rollup-config-factory/production"
+      ],
+      "files": [
+        "src/**/*",
+        "rollup.config.ts"
+      ],
+      "command": "tsx node_modules/rollup/dist/bin/rollup --config rollup.config.ts"
+    },
+    "build": {
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "output": [
+        "dist/package/rollup-config-factory/development"
+      ],
+      "files": [
+        "src/**/*",
+        "rollup.config.ts"
+      ],
+      "command": "tsx node_modules/rollup/dist/bin/rollup --config rollup.config.ts"
+    }
+  },
   "devDependencies": {
     "browserslist-config-jaid-universal": "^3.0.0",
     "bundle-declarations-webpack-plugin": "^5.1.1",
@@ -45,46 +84,5 @@
     "webpack-cli": "^5.1.4",
     "webpack-config-factory": "file://D:/git/webpack-config-factory"
   },
-  "scripts": {
-    "clean": "rm -rf dist/",
-    "build": "wireit",
-    "build:production": "wireit",
-    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
-    "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
-    "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
-    "test:debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --runInBand --detectOpenHandles",
-    "debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --colors --runInBand",
-    "prepareActionJest": "npm run build:prod"
-  },
-  "webpackConfigJaid": "universalLib",
-  "wireit": {
-    "build:production": {
-      "env": {
-        "NODE_ENV": "production"
-      },
-      "output": [
-        "dist/package/rollup-config-factory/production"
-      ],
-      "files": [
-        "src/**/*",
-        "lib/**/*",
-        "rollup.config.ts"
-      ],
-      "command": "tsx node_modules/rollup/dist/bin/rollup --config rollup.config.ts"
-    },
-    "build": {
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "output": [
-        "dist/package/rollup-config-factory/development"
-      ],
-      "files": [
-        "src/**/*",
-        "lib/**/*",
-        "rollup.config.ts"
-      ],
-      "command": "tsx node_modules/rollup/dist/bin/rollup --config rollup.config.ts"
-    }
-  }
+  "webpackConfigJaid": "universalLib"
 }
