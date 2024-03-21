@@ -1,3 +1,23 @@
 {
-  "extends": "tsconfig-jaid"
+  "compilerOptions": {
+    "allowArbitraryExtensions": true,
+    "baseUrl": ".",
+    "composite": true,
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "newLine": "lf",
+    "strictNullChecks": true,
+    "outDir": "./out/ts",
+  },
+  "typeAcquisition": {
+    "enable": true
+  },
+  "include": [
+    "./*",
+    "./src/**/*",
+    "./lib/**/*",
+    "./test/**/*",
+    "./x/**/*",
+    "./etc/**/*"
+  ]
 }
