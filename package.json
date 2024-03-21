@@ -32,21 +32,23 @@
   },
   "devDependencies": {
     "browserslist-config-jaid-universal": "^3.0.0",
-    "bundle-declarations-webpack-plugin": "^4.0.1",
-    "eslint-config-jaid": "^8.15.3",
-    "ts-node": "^10.9.1",
-    "tsconfig-jaid": "^6.1.1",
+    "bundle-declarations-webpack-plugin": "^5.1.1",
+    "eslint-config-jaid": "^8.24.0",
+    "rollup-config-factory": "^0.2.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-jaid": "^7.1.0",
     "tsconfig-paths": "^4.2.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
-    "tsx": "^3.13.0",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-config-factory": "file://D:/git/webpack-config-factory"
   },
   "scripts": {
     "clean": "rm -rf dist/",
-    "build": "if [ -z $NODE_ENV ]; then NODE_ENV=development; fi; export NODE_ENV; tsx node_modules/webpack-cli/bin/cli.js",
+    "build": "wireit",
+    "build:production": "wireit",
     "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
     "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
     "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
@@ -54,5 +56,35 @@
     "debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --colors --runInBand",
     "prepareActionJest": "npm run build:prod"
   },
-  "webpackConfigJaid": "universalLib"
+  "webpackConfigJaid": "universalLib",
+  "wireit": {
+    "build:production": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "output": [
+        "dist/package/rollup-config-factory/production"
+      ],
+      "files": [
+        "src/**/*",
+        "lib/**/*",
+        "rollup.config.ts"
+      ],
+      "command": "tsx node_modules/rollup/dist/bin/rollup --config rollup.config.ts"
+    },
+    "build": {
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "output": [
+        "dist/package/rollup-config-factory/development"
+      ],
+      "files": [
+        "src/**/*",
+        "lib/**/*",
+        "rollup.config.ts"
+      ],
+      "command": "tsx node_modules/rollup/dist/bin/rollup --config rollup.config.ts"
+    }
+  }
 }
