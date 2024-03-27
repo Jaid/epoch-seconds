@@ -76,7 +76,7 @@
     "eslint-config-jaid": "^8.24.0",
     "rollup-config-factory": "^0.3.0",
     "ts-node": "^10.9.2",
-    "tsconfig-jaid": "^7.1.0",
+    "tsconfig-jaid": "^8.0.0",
     "tsconfig-paths": "^4.2.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "tsx": "^4.7.1",
