@@ -30,6 +30,11 @@
     "type": "git",
     "url": "https://github.com/jaid/epoch-seconds"
   },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
   "scripts": {
     "clean": "rm -rf dist/",
     "build": "wireit",
@@ -71,6 +76,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
+    "@types/node": "^20.11.30",
     "browserslist-config-jaid-universal": "^3.0.0",
     "bundle-declarations-webpack-plugin": "^5.1.1",
     "eslint-config-jaid": "^8.24.0",

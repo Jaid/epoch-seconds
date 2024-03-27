@@ -3,7 +3,13 @@
  */
 const epochSeconds = (): number => {
   const msSinceUnixEpoch = Date.now()
-  const secondsSinceUnixEpoch = Math.floor(msSinceUnixEpoch / 1000)
+  const secondsSinceUnixEpoch = Math.trunc(msSinceUnixEpoch / 1000)
+  return secondsSinceUnixEpoch
+}
+epochSeconds.precise = (): number => {
+  // @ts-expect-error
+  const msSinceUnixEpoch = performance ? performance.now() : Date.now()
+  const secondsSinceUnixEpoch = msSinceUnixEpoch / 1000
   return secondsSinceUnixEpoch
 }
 
