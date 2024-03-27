@@ -51,7 +51,7 @@
       ],
       "files": [
         "src/**/*",
-        "rollup.config.ts"
+        "rollup.config.js"
       ],
       "command": "node node_modules/rollup/dist/bin/rollup --config rollup.config.js"
     },
@@ -64,7 +64,7 @@
       ],
       "files": [
         "src/**/*",
-        "rollup.config.ts"
+        "rollup.config.js"
       ],
       "command": "node node_modules/rollup/dist/bin/rollup --config rollup.config.js"
     }
