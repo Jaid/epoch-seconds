@@ -40,7 +40,8 @@
     "build:production": "wireit",
     "test": "wireit",
     "test-build": "wireit",
-    "test-build:production": "wireit"
+    "test-build:production": "wireit",
+    "release": "wireit"
   },
   "wireit": {
     "test": {
@@ -94,6 +95,12 @@
         "rollup.config.js"
       ],
       "command": "node node_modules/rollup/dist/bin/rollup --config rollup.config.js"
+    },
+    "release": {
+      "dependencies": [
+        "test-build:production"
+      ],
+      "command": "npm publish dist/package/epoch-seconds/production --access public"
     }
   },
   "devDependencies": {
