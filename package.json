@@ -2,7 +2,7 @@
   "name": "epoch-seconds",
   "version": "3.0.2",
   "type": "module",
-  "description": "Returns the amount of seconds passed since Unix epoch (1970).",
+  "description": "Returns the amount of seconds passed since Unix epoch (1970 UTC).",
   "keywords": [
     "1970",
     "date",
@@ -112,6 +112,5 @@
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-config-factory": "file://D:/git/webpack-config-factory"
-  },
-  "webpackConfigJaid": "universalLib"
+  }
 }
