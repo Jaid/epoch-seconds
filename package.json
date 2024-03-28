@@ -1,6 +1,6 @@
 {
   "name": "epoch-seconds",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "type": "module",
   "description": "Returns the amount of seconds passed since Unix epoch (1970 UTC).",
   "keywords": [
