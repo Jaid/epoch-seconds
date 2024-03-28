@@ -48,6 +48,11 @@
       "env": {
         "NODE_ENV": "test"
       },
+      "files": [
+        "src/**/*",
+        "test/**/*",
+        "package.json"
+      ],
       "command": "node --import tsx test/test.ts"
     },
     "test-build": {
@@ -75,29 +80,32 @@
         "NODE_ENV": "production"
       },
       "output": [
-        "dist/package/rollup-config-factory/production"
+        "dist/package/epoch-seconds/production"
       ],
       "files": [
         "src/**/*",
-        "rollup.config.js"
+        "rollup.config.js",
+        "package.json"
       ],
-      "command": "node node_modules/rollup/dist/bin/rollup --config rollup.config.js"
+      "command": "node node_modules/rollup/dist/bin/rollup --config"
     },
     "build": {
       "env": {
         "NODE_ENV": "development"
       },
       "output": [
-        "dist/package/rollup-config-factory/development"
+        "dist/package/epoch-seconds/development"
       ],
       "files": [
         "src/**/*",
-        "rollup.config.js"
+        "rollup.config.js",
+        "package.json"
       ],
-      "command": "node node_modules/rollup/dist/bin/rollup --config rollup.config.js"
+      "command": "node node_modules/rollup/dist/bin/rollup --config"
     },
     "release": {
       "dependencies": [
+        "build:production",
         "test-build:production"
       ],
       "command": "npm publish dist/package/epoch-seconds/production --access public"
