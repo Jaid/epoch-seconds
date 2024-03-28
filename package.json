@@ -52,7 +52,7 @@
     "test-build": {
       "env": {
         "NODE_ENV": "test",
-        "TEST_MODULE": "./dist/package/epoch-seconds/development/lib.js"
+        "MAIN_MODULE": "./dist/package/epoch-seconds/development/lib.js"
       },
       "dependencies": [
         "build"
@@ -62,7 +62,7 @@
     "test-build:production": {
       "env": {
         "NODE_ENV": "test",
-        "TEST_MODULE": "./dist/package/epoch-seconds/production/lib.js"
+        "MAIN_MODULE": "./dist/package/epoch-seconds/production/lib.js"
       },
       "dependencies": [
         "build:production"
