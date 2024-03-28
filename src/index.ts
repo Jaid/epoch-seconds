@@ -7,8 +7,7 @@ const epochSeconds = (): number => {
   return secondsSinceUnixEpoch
 }
 epochSeconds.precise = (): number => {
-  // @ts-expect-error
-  const msSinceUnixEpoch = performance ? performance.now() : Date.now()
+  const msSinceUnixEpoch = performance ? performance.timeOrigin + performance.now() : Date.now()
   const secondsSinceUnixEpoch = msSinceUnixEpoch / 1000
   return secondsSinceUnixEpoch
 }

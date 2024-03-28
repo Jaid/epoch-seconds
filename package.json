@@ -36,17 +36,39 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf dist/",
     "build": "wireit",
     "build:production": "wireit",
-    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production/index.js jest",
-    "test:coverage": "npm run test:dev -- --passWithNoTests --json --outputFile dist/jest/stats.json --logHeapUsage --runInBand --coverage --detectOpenHandles",
-    "test:dev": "npm run build:dev && NODE_ENV=test MAIN=dist/package/development/index.js jest",
-    "test:debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --runInBand --detectOpenHandles",
-    "debug": "npm run build:dev && DEBUG=\"$npm_package_name,$npm_package_name:*\" NODE_ENV=test MAIN=dist/package/development/index.js jest --colors --runInBand",
-    "prepareActionJest": "npm run build:prod"
+    "test": "wireit",
+    "test-build": "wireit",
+    "test-build:production": "wireit"
   },
   "wireit": {
+    "test": {
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "command": "node --import tsx test/test.ts"
+    },
+    "test-build": {
+      "env": {
+        "NODE_ENV": "test",
+        "TEST_MODULE": "./dist/package/epoch-seconds/development/lib.js"
+      },
+      "dependencies": [
+        "build"
+      ],
+      "command": "node --import tsx test/test.ts"
+    },
+    "test-build:production": {
+      "env": {
+        "NODE_ENV": "test",
+        "TEST_MODULE": "./dist/package/epoch-seconds/production/lib.js"
+      },
+      "dependencies": [
+        "build:production"
+      ],
+      "command": "node --import tsx test/test.ts"
+    },
     "build:production": {
       "env": {
         "NODE_ENV": "production"
