@@ -41,15 +41,18 @@
     "test": "wireit",
     "test-build": "wireit",
     "test-build:production": "wireit",
-    "release": "wireit"
+    "release": "wireit",
+    "release:windows": "wireit"
   },
   "wireit": {
     "test": {
       "env": {
-        "NODE_ENV": "test"
+        "NODE_ENV": "test",
+        "MAIN_MODULE": "src/index.ts"
       },
       "files": [
         "src/**/*",
+        "lib/**/*",
         "test/**/*",
         "package.json"
       ],
@@ -84,6 +87,7 @@
       ],
       "files": [
         "src/**/*",
+        "lib/**/*",
         "rollup.config.js",
         "package.json"
       ],
@@ -98,6 +102,7 @@
       ],
       "files": [
         "src/**/*",
+        "lib/**/*",
         "rollup.config.js",
         "package.json"
       ],
@@ -105,10 +110,17 @@
     },
     "release": {
       "dependencies": [
-        "build:production",
-        "test-build:production"
+        "test-build:production",
+        "build:production"
       ],
-      "command": "npm publish dist/package/epoch-seconds/production --access public"
+      "command": "fd --unrestricted --full-path 'dist/package/.+/production/package.json' --exec bash -c 'npm publish {//}'"
+    },
+    "release:windows": {
+      "dependencies": [
+        "test-build:production",
+        "build:production"
+      ],
+      "command": "pwsh -Command \"Get-ChildItem -Path 'dist/package/*/production/package.json' | ForEach-Object { npm publish $_.DirectoryName }\""
     }
   },
   "devDependencies": {
