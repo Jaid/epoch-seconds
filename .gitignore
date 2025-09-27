@@ -40,7 +40,8 @@ Temporary Items
 /dist/
 /temp/
 /private/
-/cache/
+/srcCompiled/
+/srcCompiled-*/
 
 # NodeJS, based on https://github.com/github/gitignore/blob/main/Node.gitignore
 *.log
@@ -60,6 +61,3 @@ package-lock.json
 
 # ESLint
 .eslintcache
-
-# Wireit
-/.wireit/
