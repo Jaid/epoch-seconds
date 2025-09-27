@@ -45,7 +45,6 @@
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
     "@types/bun": "^1.2.22",
-    "@types/node": "^24.5.2",
     "browserslist-config-jaid-universal": "^3.0.0",
     "bundle-declarations-webpack-plugin": "^6.0.0",
     "eslint-config-jaid": "^13.3.2",
