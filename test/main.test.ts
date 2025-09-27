@@ -1,9 +1,8 @@
-import {test} from 'node:test'
+import {test} from 'bun:test'
 
-import assert from './lib/assert.js'
-import {getMainModuleDefault} from './lib/getMainModule.js'
+import {getMainModuleDefault, assert} from 'zeug'
 
-const epochSeconds = await getMainModuleDefault<typeof import('epoch-seconds')>()
+const epochSeconds = await getMainModuleDefault<typeof import('epoch-seconds')>(`src/index.ts`)
 const assertedFloor = 1_514_764_800 // Jan 01 2018
 const assertedCeil = 3_786_912_000 // Jan 01 2090
 test(`epochSeconds()`, async () => {

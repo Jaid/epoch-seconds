@@ -38,28 +38,27 @@
   "scripts": {
     "build": "NODE_ENV=development node node_modules/rollup/dist/bin/rollup --config",
     "build:production": "NODE_ENV=production node node_modules/rollup/dist/bin/rollup --config",
-    "test": "NODE_ENV=test MAIN_MODULE=src/index.ts node --import tsx test/test.ts",
     "test-build": "NODE_ENV=test MAIN_MODULE=./dist/package/epoch-seconds/development/lib.js node --import tsx test/test.ts",
     "test-build:production": "NODE_ENV=test MAIN_MODULE=./dist/package/epoch-seconds/production/lib.js node --import tsx test/test.ts",
-    "release": "fd --unrestricted --full-path 'dist/package/.+/production/package.json' --exec bash -c 'npm publish {//}'",
-    "release:windows": "pwsh -Command \"Get-ChildItem -Path 'dist/package/*/production/package.json' | ForEach-Object { npm publish $_.DirectoryName }\""
+    "release": "fd --unrestricted --full-path 'dist[\\\\/]package[\\\\/][\\w-]+[\\\\/]production[\\\\/]package.json' --exec bun publish --cwd {//}'"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
-    "@types/node": "^20.12.4",
+    "@types/bun": "^1.2.22",
+    "@types/node": "^24.5.2",
     "browserslist-config-jaid-universal": "^3.0.0",
-    "bundle-declarations-webpack-plugin": "^5.1.1",
-    "eslint-config-jaid": "^8.24.0",
-    "rollup-config-factory": "^0.3.0",
+    "bundle-declarations-webpack-plugin": "^6.0.0",
+    "eslint-config-jaid": "^13.3.2",
+    "rollup-config-factory": "^0.4.1",
     "tsconfig-jaid-node": "^8.1.0",
     "tsconfig-paths": "^4.2.0",
-    "tsconfig-paths-webpack-plugin": "^4.1.0",
-    "tsx": "^4.7.2",
-    "type-fest": "^4.15.0",
-    "typescript": "^5.4.4",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4",
-    "wireit": "^0.14.4",
-    "zeug": "^0.4.0"
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
+    "tsx": "^4.20.6",
+    "type-fest": "^5.0.1",
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "wireit": "^0.14.12",
+    "zeug": "^2.1.0"
   }
 }
