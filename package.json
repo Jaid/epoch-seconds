@@ -36,11 +36,12 @@
     }
   },
   "scripts": {
-    "build": "NODE_ENV=development node node_modules/rollup/dist/bin/rollup --config",
+    "build": "bun node_modules/rollup/dist/bin/rollup --config",
     "build:production": "NODE_ENV=production node node_modules/rollup/dist/bin/rollup --config",
     "test-build": "NODE_ENV=test MAIN_MODULE=./dist/package/epoch-seconds/development/lib.js node --import tsx test/test.ts",
     "test-build:production": "NODE_ENV=test MAIN_MODULE=./dist/package/epoch-seconds/production/lib.js node --import tsx test/test.ts",
-    "release": "fd --unrestricted --full-path 'dist[\\\\/]package[\\\\/][\\w-]+[\\\\/]production[\\\\/]package.json' --exec bun publish --cwd {//}'"
+    "release": "fd --unrestricted --full-path 'dist[\\\\/]package[\\\\/][\\w-]+[\\\\/]production[\\\\/]package.json' --exec bun publish --cwd {//}",
+    "test": "bun test ./test"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
