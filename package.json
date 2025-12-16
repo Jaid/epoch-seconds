@@ -36,8 +36,8 @@
     }
   },
   "scripts": {
-    "build": "bun node_modules/rollup/dist/bin/rollup --config",
-    "build:production": "NODE_ENV=production node node_modules/rollup/dist/bin/rollup --config",
+    "build": "bun x/build.ts",
+    "build:production": "NODE_ENV=production bun run build",
     "test-build": "NODE_ENV=test MAIN_MODULE=./dist/package/epoch-seconds/development/lib.js node --import tsx test/test.ts",
     "test-build:production": "NODE_ENV=test MAIN_MODULE=./dist/package/epoch-seconds/production/lib.js node --import tsx test/test.ts",
     "release": "fd --unrestricted --full-path 'dist[\\\\/]package[\\\\/][\\w-]+[\\\\/]production[\\\\/]package.json' --exec bun publish --cwd {//}",
@@ -45,17 +45,21 @@
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
-    "@types/bun": "^1.2.23",
+    "@types/bun": "^1.3.4",
     "browserslist-config-jaid-universal": "^3.0.0",
     "bundle-declarations-webpack-plugin": "^6.0.0",
-    "eslint-config-jaid": "^13.3.2",
+    "dts-bundle-generator": "^9.5.1",
+    "eslint-config-jaid": "^22.1.0",
+    "forward-slash-path": "^0.3.0",
+    "publishimo": "^5.0.6",
     "rollup-config-factory": "^0.4.2",
-    "tsconfig-jaid-node": "^8.1.0",
+    "tsconfig-jaid-node": "^10.0.0",
     "tsconfig-paths": "^4.2.0",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
-    "type-fest": "^5.0.1",
-    "typescript": "^5.9.2",
-    "webpack": "^5.101.3",
+    "tsdown": "^0.18.0",
+    "type-fest": "^5.3.1",
+    "typescript": "^5.9.3",
+    "webpack": "^5.104.0",
     "webpack-cli": "^6.0.1",
     "zeug": "^2.1.0"
   }
